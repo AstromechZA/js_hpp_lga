@@ -14,10 +14,27 @@ var HPPSIM = function _HPPSIM(canvas) {
 	this.c = this.canvas.getContext('2d');
 	this.imgdata = this.c.createImageData(this.canvas.width, this.canvas.height);
 
-	this.cells = new Uint16Array(this.width * this.height);
-
+	this.grid = new HPPGRID(this.groups_w, this.groups_h);
 
 }
+
+HPPSIM.prototype.populate = function() {
+	var newgrid = new HPPGRID(this.grid.width, this.grid.height);
+
+
+
+	this.grid = newgrid;
+};
+
+HPPSIM.prototype.collide = function() {
+	var newgrid = new HPPGRID(this.grid.width, this.grid.height);
+
+
+
+	this.grid = newgrid;
+};
+
+
 
 HPPSIM.prototype.mainloop = function() {
 	if (this.state == 1) {
