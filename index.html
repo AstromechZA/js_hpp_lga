@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 
 	<script src="scripts/hpp_grid.js"></script>
+	<script src="scripts/hpp_wrap.js"></script>
 	<script src="scripts/hpp_sim.js"></script>
 	<script src="scripts/main.js"></script>
 </head>
@@ -17,11 +18,15 @@
 	<div class="container narrow-container content-container">
 		<div class="row">&nbsp;</div>
 		<div class="row">
-			<canvas id="maincanvas" width="500px" height="500px" />
-		</canvas>
+			<div class="col-sm-12">
+				<canvas id="maincanvas" width="500px" height="500px" />
+			</div>
+		</div>
 		<div class="row">
-  			<a id="start_button" href="javascript:void(0);" class="btn btn-primary btn-sm">Start</a>
-  			<a id="stop_button" href="javascript:void(0);" class="btn btn-danger btn-sm">Stop</a>
+			<div class="col-sm-12">
+				<a id="start_button" href="javascript:void(0);" class="btn btn-primary btn-sm">Start</a>
+				<a id="stop_button" href="javascript:void(0);" class="btn btn-danger btn-sm">Stop</a>
+  			</div>
   		</div>
 	</div>
 

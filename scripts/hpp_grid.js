@@ -1,12 +1,17 @@
 var HPPGRID = function _HPPGRID(width, height) {
 	this.width = width;
 	this.height = height;
+	this.doublewidth = width*2;
+	this.doubleheight = height*2;
 
 	this.grid = new Uint16Array(this.width * this.height);
 }
 
 // Get the numeric value (4 bits) of the cell ANDED by the val
 HPPGRID.prototype.get_v = function(x, y, p) {
+	x = (x + this.doublewidth) % this.doublewidth;
+	y = (y + this.doubleheight) % this.doubleheight;
+
 	var _x = Math.floor(x / 2);
 	var _y = Math.floor(y / 2);
 
@@ -40,6 +45,7 @@ HPPGRID.prototype.get_left = function(x, y) {
 
 // Set the numeric value (4 bits) of the cell
 HPPGRID.prototype.set_v = function(x, y, p, bool) {
+
 	var _x = Math.floor(x / 2);
 	var _y = Math.floor(y / 2);
 
