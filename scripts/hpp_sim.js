@@ -1,11 +1,11 @@
-var HPPSIM = function _HPPSIM(canvas) {
+var HPPSIM = function _HPPSIM(canvas, w, h) {
 	this.state = 0; 			// stopped
 	this.canvas = canvas[0];
 	this.tick = 0;
 
 	// pixels wide x height
-	this.groups_w = 200;
-	this.groups_h = 200;
+	this.groups_w = w;
+	this.groups_h = h;
 
 	// each pixel is really a 2x2 group
 	this.width = this.groups_w*2;

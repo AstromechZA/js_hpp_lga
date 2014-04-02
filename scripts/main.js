@@ -4,7 +4,7 @@
 var sim = null;
 
 $(function(){
-	sim = new HPPSIM($('#maincanvas'));
+	sim = new HPPSIM($('#maincanvas'), 400, 400);
 
 	function start (e) {
 		sim.start();
