@@ -7,9 +7,9 @@ var HPPWRAP = function _HPPWRAP(width, height) {
 
 HPPWRAP.prototype.randomize = function() {
 
-    for (var i = 0; i < 100000; i++) {
-        var x = Math.floor(Math.random() * this.width * 2);
-        var y = Math.floor(Math.random() * this.height * 2);
+    for (var i = 0; i < 100; i++) {
+        var x = Math.floor(Math.random() * 100);
+        var y = Math.floor(Math.random() * 100);
         var d = 1 << Math.floor(Math.random() * 4);
         this.grid.set_v(x, y, d, true);
     };

@@ -1,41 +1,24 @@
-var HPPSIM = function _HPPSIM(canvas, w, h) {
+var HPPSIM = function _HPPSIM(canvas) {
 	this.state = 0; 			// stopped
 	this.canvas = canvas[0];
 	this.tick = 0;
 
-	// pixels wide x height
-	this.groups_w = w;
-	this.groups_h = h;
 
-	// each pixel is really a 2x2 group
-	this.width = this.groups_w*2;
-	this.height = this.groups_h*2;
+	// pixel wide x height
+	this.width = canvas.width();
+	this.height = canvas.height();
+
+	// groups wide x height
+	this.half_w = this.width << 1;
+	this.half_h = this.height << 1;
 
 	this.c = this.canvas.getContext('2d');
-	this.imgdata = this.c.createImageData(this.groups_w, this.groups_h);
+	this.imgdata = this.c.createImageData(this.width, this.height);
 
-	this.grid = new HPPWRAP(this.groups_w, this.groups_h);
+	this.grid = new HPPWRAP(this.half_w, this.half_h);
 	this.grid.randomize();
 
 }
-
-HPPSIM.prototype.populate = function() {
-	var newgrid = new HPPGRID(this.grid.width, this.grid.height);
-
-
-
-	this.grid = newgrid;
-};
-
-HPPSIM.prototype.collide = function() {
-	var newgrid = new HPPGRID(this.grid.width, this.grid.height);
-
-
-
-	this.grid = newgrid;
-};
-
-
 
 HPPSIM.prototype.mainloop = function() {
 	if (this.state == 1) {
@@ -58,10 +41,10 @@ HPPSIM.prototype.mainloop = function() {
 				this.imgdata.data[pi+2] = f * d;
 				this.imgdata.data[pi+3] = 255;
 
-			};
-		};
+			}
+		}
 
-		this.c.putImageData(this.imgdata,0,0);
+		this.c.putImageData(this.imgdata, 0, 0);
 
 		this.tick += 1;
 		window.requestAnimFrame(HPPSIM.prototype.mainloop.bind(this));
