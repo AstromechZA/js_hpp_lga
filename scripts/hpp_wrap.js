@@ -16,11 +16,16 @@ HPPWRAP.prototype.randomize = function() {
 
 }
 
-HPPWRAP.prototype.propagate = function() {
+HPPWRAP.prototype.propagate_wrapped = function() {
     var newgrid = new HPPGRID(this.width, this.height);
 
-    for (var y = 0; y < this.height * 2; y++) {
-        for (var x = 0; x < this.width * 2; x++) {
+    var minx = 0; 
+    var maxx = this.width * 2;
+    var miny = 0;
+    var maxy = this.height * 2;
+
+    for (var y = miny; y < maxy; y++) {
+        for (var x = minx; x < maxx; x++) {
             newgrid.set_up(x,y, this.grid.get_up(x, y+1));
             newgrid.set_down(x,y, this.grid.get_down(x, y-1));
 
