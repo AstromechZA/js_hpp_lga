@@ -12,8 +12,8 @@ HPPGRID.prototype.get_v = function(x, y, p) {
 	x = (x + this.doublewidth) % this.doublewidth;
 	y = (y + this.doubleheight) % this.doubleheight;
 
-	var _x = Math.floor(x / 2);
-	var _y = Math.floor(y / 2);
+	var _x = x >> 1;
+	var _y = y >> 1;
 
 	var _ox = x % 2;
 	var _oy = y % 2;
@@ -21,7 +21,7 @@ HPPGRID.prototype.get_v = function(x, y, p) {
 	// 16 bit cell value
 	var _v = this.grid[_y * this.width + _x];
 
-	var _shift = 4 * (_oy * 2 + _ox);
+	var _shift = ((_oy << 1) + _ox) << 2;
 
 	var _p = p & 15;
 	return (_v >> _shift) & _p;
@@ -46,8 +46,8 @@ HPPGRID.prototype.get_left = function(x, y) {
 // Set the numeric value (4 bits) of the cell
 HPPGRID.prototype.set_v = function(x, y, p, bool) {
 
-	var _x = Math.floor(x / 2);
-	var _y = Math.floor(y / 2);
+	var _x = x >> 1;
+	var _y = y >> 1;
 
 	var _ox = x % 2;
 	var _oy = y % 2;
@@ -56,7 +56,7 @@ HPPGRID.prototype.set_v = function(x, y, p, bool) {
 
 	var B = p & 15;
 
-	var C = 4 * (_oy * 2 + _ox);
+	var C = ((_oy << 1) + _ox) << 2;
 	var D = (A - (A & (B << C)));
 	if (bool) D = D |(B << C);
 	this.grid[_y * this.width + _x] = D;
