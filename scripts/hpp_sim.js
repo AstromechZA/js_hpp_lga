@@ -9,8 +9,8 @@ var HPPSIM = function _HPPSIM(canvas) {
 	this.height = canvas.height();
 
 	// groups wide x height
-	this.half_w = this.width << 1;
-	this.half_h = this.height << 1;
+	this.half_w = this.width >> 1;
+	this.half_h = this.height >> 1;
 
 	this.c = this.canvas.getContext('2d');
 	this.imgdata = this.c.createImageData(this.width, this.height);
