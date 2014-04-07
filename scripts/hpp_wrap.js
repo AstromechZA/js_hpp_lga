@@ -174,5 +174,3 @@ HPPWRAP.prototype.propagate_bounced = function() {
 
     this.grid = newgrid;
 };
-
-

@@ -3,7 +3,7 @@ var HPPGRID = function _HPPGRID(width, height) {
 	this.height = height;
 	this.doublewidth = width*2;
 	this.doubleheight = height*2;
-
+	this.densarray = [0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4];
 	this.grid = new Uint16Array(this.width * this.height);
 }
 
@@ -77,5 +77,5 @@ HPPGRID.prototype.set_left = function(x, y, b) {
 
 HPPGRID.prototype.get_density = function(x, y) {
 	var v = this.get_v(x, y, 15);
-	return [0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4][v];
+	return this.densarray[v];
 };
