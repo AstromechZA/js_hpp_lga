@@ -23,8 +23,7 @@ var HPPSIM = function _HPPSIM(canvas) {
 HPPSIM.prototype.mainloop = function() {
 	if (this.state == 1) {
 
-		this.grid.propagate_wrapped();
-
+		this.grid.propagate_bounced();
 
 		var pi = 0;
 		var d = 0;

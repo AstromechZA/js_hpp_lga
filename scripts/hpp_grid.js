@@ -9,9 +9,6 @@ var HPPGRID = function _HPPGRID(width, height) {
 
 // Get the numeric value (4 bits) of the cell ANDED by the val
 HPPGRID.prototype.get_v = function(x, y, p) {
-	x = (x + this.doublewidth) % this.doublewidth;
-	y = (y + this.doubleheight) % this.doubleheight;
-
 	var _x = x >> 1;
 	var _y = y >> 1;
 
@@ -81,27 +78,4 @@ HPPGRID.prototype.set_left = function(x, y, b) {
 HPPGRID.prototype.get_density = function(x, y) {
 	var v = this.get_v(x, y, 15);
 	return [0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4][v];
-};
-
-HPPGRID.prototype.print = function() {
-	var s = '';
-	for (var y = 0; y < this.height*2; y++) {
-		for (var x = 0; x < this.width*2; x++) {
-			if (x > 0) s += ", ";
-			s += this.get_v(x, y, 15);
-		};
-		s += "\n";
-	};
-	console.log(s);
-};
-
-HPPGRID.prototype.print_density = function() {
-	var s = '';
-	for (var y = 0; y < this.height*2; y++) {
-		for (var x = 0; x < this.width*2; x++) {
-			s += this.get_density(x, y);
-		};
-		s += "\n";
-	};
-	console.log(s);
 };
